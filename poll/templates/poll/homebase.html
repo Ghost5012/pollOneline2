@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+			{% load static %}
+
+			<meta charset="utf-8">
+			<meta http-equiv="X-UA-Compatible" content="IE=edge">
+			<meta name="viewport" content="width=device-width, initial-scale=1">
+			<title>{%block title%}{% endblock %}</title>
+            {%block addload%}{%endblock%}
+			<!-- CSS -->
+			<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:400,100,300,500">
+			<link rel="stylesheet" href="{% static 'poll/bootstrap/css/bootstrap.min.css' %}">
+			<link rel="stylesheet" href="{% static 'poll/font-awesome/css/font-awesome.min.css' %}">
+			<link rel="stylesheet" href="{% static 'poll/css/form-elements.css' %}">
+            <link rel="stylesheet" href="{% static 'poll/css/style.css' %}">
+            <!-- Start WOWSlider.com HEAD section -->
+            <link rel="stylesheet" type="text/css" href="{% static 'poll/engine1/style.css' %}" />
+            <script type="text/javascript" src="{% static 'poll/engine1/jquery.js' %}"></script>
+            <!-- End WOWSlider.com HEAD section -->
+
+        <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+        <!--[if lt IE 9]> 
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+        <![endif]-->
+
+        <!-- Favicon and touch icons -->
+        <link rel="shortcut icon" href="{% static 'poll/img/logo.png'%}">
+        <link rel="apple-touch-icon-precomposed" sizes="144x144" href="{% static 'poll/ico/apple-touch-icon-144-precomposed.png' %}">
+        <link rel="apple-touch-icon-precomposed" sizes="114x114" href="{% static 'poll/ico/apple-touch-icon-114-precomposed.png' %}">
+        <link rel="apple-touch-icon-precomposed" sizes="72x72" href="{% static 'poll/ico/apple-touch-icon-72-precomposed.png' %}">
+        <link rel="apple-touch-icon-precomposed" href="{% static 'poll/ico/apple-touch-icon-57-precomposed.png' %}">
+
+    </head>
+
+    <body classs="container" >
+		<div id="whole_page">
+                <div id="bloc_page" style="background:black;">
+                    {% block navbar %}
+                    <!-- Top menu -->
+                        <nav class="navbar navbar-inverse navbar-no-bg">
+                            <div class="container-fluid">
+                                <div class="navbar-header">
+                                    <a class="navbar-brand" href="#"><span class="heading">Cameroon 2018 <span class="heading_color">Presidential Election</span> </span> </a>
+                                </div>
+                                <!-- Collect the nav links, forms, and other content for toggling -->
+                                <div class="collapse navbar-collapse" id="top-navbar-1">
+                                    <ul class="nav navbar-nav navbar-right">
+                                        <li>
+                                                <a href="#"><span class="glyphicon glyphicon-time"></span><small id="timer"></small></a>
+                                        </li>
+                                        <li>
+                                            <a data-toggle="modal"  href="{% url 'poll:logout' %}">Logout</i></a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </nav>
+                    {% endblock %}
+                    <!-- Top content -->
+                    {% block content %}
+                    {% endblock %}
+                    <!-- Javascript -->
+                    {% block js %}
+                        <script src="{% static 'poll/js/jquery-1.11.1.min.js' %}"></script>
+                        <script src="{% static 'poll/bootstrap/js/bootstrap.min.js' %}"></script>
+                        <script src="{% static 'poll/js/jquery.backstretch.min.js' %}"></script>
+                        <script src="{% static 'poll/js/scripts.js' %}"></script>
+                    {% endblock %}   
+                    <!-- Modal -->
+                   <!-- {%include "poll/services.html"%}-->
+                    {%block footer%}
+                    <div class="page-footer ">
+                            <div class="panel panel-default ">
+                                <div class="panel-footer ">
+                                    <small>&copy; 2018 Designed By  &trade;</small>
+                                </div>
+                            </div>
+                        </div>
+                    {%endblock%}
+                </div>
+            </div>
+		{% include "poll/modal.html" %}
+    </body>
+
+</html>

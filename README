@@ -1,0 +1,3 @@
+version améliorée et fonctionelle du project pollOneline basée sur une utilisation 
+d'un seul model utisateur dont les admins et les agents dépendent tous. 
+avec intégration du module Rest

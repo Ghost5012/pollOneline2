@@ -1,0 +1,33 @@
+{% extends "poll/homebase.html" %}
+{% block title %}Super Admin{% endblock %}
+{% block content %}
+
+	<ul class="nav nav-tabs">
+		<li class="active"><a href="#">Home</a></li>
+		<li><a href="{%url 'poll:regAgents'%}">Register Agents</a></li>
+		<li><a href="{%url 'poll:regParty'%}">Register Political Parties</a></li>
+		<li><a href="{%url 'poll:regCand'%}">Register Candidates</a></li>
+		<!--<li><a href="#">Set Elections date</a></li>-->
+		<!--<li><a href="#">Set campagain date</a></li>-->
+	</ul>
+	  {%load static%}
+	
+		<div class="top-content" style="background-image:url({% static 'poll/img/backgrounds/7.jpg' %});">
+        	{%block admcontent%}
+            <div class="inner-bg">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-sm-7 text">
+                            <h1><strong>ELECAM</strong> Registration Campaign</h1>
+                            <div class="description">
+                            	<p>
+	                            	This is a platform is for the President of supreme court only for more go to <a href="http://elecam.gov"><strong>ELECAM</strong></a>
+                            	</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+			{%endblock%}
+		</div>
+{% endblock %}

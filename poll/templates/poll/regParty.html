@@ -1,0 +1,53 @@
+{%extends 'poll/superAdmin.html'%}
+{%block admcontent%}
+<!-- Top menu -->
+<div class="inner-bg">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-4 text">
+                    <h1 class="wow fadeInLeftBig" data-wow-duration="1.5s" data-wow-delay="1s">
+                        2018 Election <strong>Day</strong>
+                    </h1>
+                    <div class="description wow fadeInLeftBig" data-wow-duration="1.5s" data-wow-delay="2s">
+                        <p>
+                            This page is for Cameroonians citizens only, those who get their self registered 
+                            on the élection lists
+                        </p>
+                    </div>
+                </div>
+                <!--    <div class="timer wow fadeInUp" data-wow-duration="1.5s" data-wow-delay="2.5s">
+                        
+                        <div class="hours-wrapper">
+                            <span class="hours"></span> <span class="t-text">hours /</span>
+                        </div>
+                        <div class="minutes-wrapper">
+                            <span class="minutes"></span> <span class="t-text">minutes /</span>
+                        </div>
+                        <div class="seconds-wrapper">
+                            <span class="seconds"></span> <span class="t-text">seconds</span>
+                        </div>
+                    </div> -->
+                <div class="col-sm-4">
+                    <div class="form-up">
+                        <form class="registration-form" role="form" action="{%url 'poll:saveParty'%}" method="post">
+                            {% csrf_token %}
+                            <div class="form-group">
+                                <label class="sr-only" for="from-party">party</label>
+                                <input type="text" name="party" placeholder="party's name" class="subscribe-email form-control" id="subscribe-email">
+                            </div>
+                            <div class="form-group">
+                                    <label class="sr-only" for="from-party">Acronym</label>
+                                    <input type="text" name="acronym" placeholder="party's acronym" class=" form-control" id="subscribe-email">
+                                </div>
+                            <div class="form-group">
+                                <label class="sr-only" for="party-logo">logo</label>
+                                <input type="file" name="logo">
+                            </div>
+                            <button type="submit" class="btn">Register</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{%endblock%}

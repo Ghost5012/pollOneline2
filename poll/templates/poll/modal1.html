@@ -1,0 +1,64 @@
+<div id="myModal" class="modal fade" role="dialog">
+        <div class="modal-dialog modal-sm">
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal">&times;</button>
+                  <h4 style="color:red;" class="h4_login"><span class="glyphicon glyphicon-lock"></span> Login</h4>
+                </div>
+                <div class="modal-body">
+                    <form role="form" method="POST" action="{%url 'poll:login'%}">
+                        {%csrf_token%}
+                        <div class="form-group">
+                          <h6 style="font-style: italic;font-size: 10px;color: red;">{{message|lower}}</h6>
+                        </div>
+                        <div class="form-group">
+                          <label for="usrname"><span class="glyphicon glyphicon-user"></span> Username</label>
+                          <input type="text" class="form-control" id="usrname" name="nom" placeholder="Enter user name" required/>
+                        </div>
+                        <div class="form-group">
+                          <label for="psw"><span class="glyphicon glyphicon-eye-open"></span> Password</label>
+                          <input type="password" class="form-control" id="psw" name="pw" placeholder="Enter password" required/>
+                        </div>
+                        
+                        
+                                                    
+                        <!-- captcha codes
+                        <form action="" method="post" name="form1" id="form1" > -->
+                        <!-- <div class="form-group">
+                            <table width="270" border="0" align="center" cellpadding="5" cellspacing="2" class="tables">
+                                <?php if(isset($msg)){?>
+                                
+                                <tr>
+                                  <td colspan="2" align="center" valign="top" ><div class="alert alert-danger"><a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a><?php echo $msg?></div></td>
+                                </tr>
+                                <?php } ?>
+                                <tr>
+                                  
+                                  <td align="center"><img src="resources/captcha/captcha.php?rand=<?php echo rand();?>" id='captchaimg'></img><br/>
+                                    
+                                    <label for='message'><span class="glyphicon glyphicon-qrcode"></span> Enter the code above here :</label>
+                                    <input id="captcha_code" name="captcha_code" type="text" class="form-control" placeholder="Enter code here"required /><br/>
+                                    <label for='message'><span class="glyphicon glyphicon-eye-close"></span> 
+                                    Can't read the image? click <a href="javascript: refreshCaptcha();" class="refresh"><span class="glyphicon glyphicon-refresh"></span></a> to refresh.</label>
+                                 </td>
+                                </tr>
+                            </table>
+                        </div>
+                        
+                        -->
+                        
+                        <div class="checkbox">
+                          <label><input type="checkbox" value="" checked>Remember me</label>
+                        </div>
+                        <button type="submit" name="Submit" class="btn btn-default btn-success btn-block"><span class="glyphicon glyphicon-off"></span> Login</button>
+                      
+                    </form>
+                </div>
+                <div class="modal-footer">
+                  <button type="submit" class="btn btn-default btn-default pull-left" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> Cancel</button>
+                  <p>Forgot <a href="#" class="forgot_password">Password?</a></p>
+                </div>
+            </div>
+        </div>
+    </div>

@@ -1,0 +1,59 @@
+{%extends 'poll/superAdmin.html'%}
+{%block admcontent%}
+<!-- Top menu -->
+<div class="inner-bg">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-4 text">
+                    <h1 class="wow fadeInLeftBig" data-wow-duration="1.5s" data-wow-delay="1s">
+                        2018 Election <strong>Day</strong>
+                    </h1>
+                    <div class="description wow fadeInLeftBig" data-wow-duration="1.5s" data-wow-delay="2s">
+                        <p>
+                            This page is for Cameroonians citizens only, those who get their self registered 
+                            on the élection lists
+                        </p>
+                    </div>
+                </div>
+                <!--    <div class="timer wow fadeInUp" data-wow-duration="1.5s" data-wow-delay="2.5s">
+                        
+                        <div class="hours-wrapper">
+                            <span class="hours"></span> <span class="t-text">hours /</span>
+                        </div>
+                        <div class="minutes-wrapper">
+                            <span class="minutes"></span> <span class="t-text">minutes /</span>
+                        </div>
+                        <div class="seconds-wrapper">
+                            <span class="seconds"></span> <span class="t-text">seconds</span>
+                        </div>
+                    </div> -->
+                <div class="col-sm-4"> 
+                    <div class="form-up">
+                        <form class="registration-form" role="form" action="{%url 'poll:saveCand'%}" method="post">
+                            {% csrf_token %}
+                            <div class="form-group">
+                                    <label class="sr-only" for="form-first-name">First name</label>
+                                    <input type="text" name="nom" placeholder= "Name..." class="form-first-name form-control" id="form-first-name">
+                            </div>
+                            <div class="form-group">
+                                    <label class="sr-only" for="form-last-name">Last name</label>
+                                    <input type="text" name="surname" placeholder="Last name..." class="form-last-name form-control" id="form-last-name">
+                            </div>
+                           <div class="form-group">
+                            <p>
+                                <label for="from-name">party</label>
+                                <select name="party" class="form-control">
+                                    {%for p in party%}
+                                        <option value={{p.p_acronyme}}>{{p.p_acronyme}}</option>
+                                    {%endfor%}
+                                </select>
+                            </p>
+                            </div>
+                            <button type="submit" class="btn">Register</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{%endblock%}
