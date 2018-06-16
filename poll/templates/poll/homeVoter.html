@@ -17,7 +17,7 @@
                     <div class="description wow fadeInLeftBig" data-wow-duration="1.5s" data-wow-delay="2s">
                         <p>
                             Befor the Election day, this plaform is only acessible by the ELECAM registration agents
-                            and the President of the supreme cout. You are advised to <a href="#"><strong>your password</strong></a> for secutity 
+                            and the President of the supreme cout. You are advised to <a href="{% url 'poll:pw' %}"><strong>your password</strong></a> for secutity 
                             purpose
                         </p>
                     </div>
@@ -27,7 +27,7 @@
 
 <script>
 // Set the date we're counting down to
-var countDownDate = new Date("June 11, 2018 00:00:00").getTime();
+var countDownDate = new Date("Oct 11, 2018 00:00:00").getTime();
 
 // Update the count down every 1 second
 var x = setInterval(function() {

@@ -1,4 +1,5 @@
 from django.shortcuts import render, redirect
+from django.contrib.auth.hashers import make_password,check_password
 from django.http import HttpResponse, HttpResponseRedirect
 from django.urls import reverse
 from django.views import View
@@ -10,7 +11,12 @@ from poll.models import *
 # Create your views here.
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 import datetime
-eldate=datetime.date(2018,6,10)
+
+#------*---*-- Take note of the line below
+eldate=datetime.date(2018,11,11)
+#------*--*--- to set the current as the election day,uncomment the line below and comment the one up
+#eldate=datetime.date.today()
+
 class IndexView(View):
     """vue présentant la page d'acceuil site de vote"""
     def get(self,request):
@@ -21,6 +27,7 @@ class IndexView(View):
 def AdPicture(request):
     """requis pour ajouter la photo dun utilisateur au profil actuel"""
     userId=request.session['userId']
+    request.session['userId']
     request.session['userId']=userId
     picture=BASE_DIR+'/ml/dataset/'+str(id)+'.'+str(1)+'.jpg'
     request.session['picture']=picture
@@ -51,7 +58,7 @@ class LoginView(View):
                     """the agents"""
                     form=RegistrationForm()
                     login(request,user)
-                    return render(request,'poll/homeAdmin1.html',{'form':form})
+                    return render(request,'poll/homeAdmin1.html')
                 elif user.electeur.status=="President":
                     """the president of the supreme court"""
                     login(request,user)
@@ -79,21 +86,23 @@ class RegisterElecteur(View):
             satut="Voter"
         else:
             satut="Agent"
-        form=RegistrationForm(request.POST)
-        if form.is_valid():
-            user=form.save()
-            user.refresh_from_db()
-            user.electeur.date_of_birth=form.clean_data.get('date_of_birth')
-            user.electeur.place_of_birth=form.clean_data.get('place_of_birth')
-            user.electeur.status=satut
-            user.electeur.picture=request.session['picture']
-            user.save()
-            form=RegistrationForm()
-            return render(request,'poll/homeAdmin1.html',{'form':form})
-            #return redirect()
-        else:
-            form=RegistrationForm()
-            return render(request,'poll/homeAdmin1.html',{'form':form})
+        try:
+            u=str(request.session['userId'])
+            name=request.POST['name']
+            surname=request.POST['surname']
+            dob=request.POST['dob']
+            pob=request.POST['pob']
+            us=User.objects.create(username=u,first_name=name,last_name=surname,password=make_password(u))
+            us.electeur.date_of_birth=dob
+            us.save()
+            us.electeur.place_of_birth=pob
+            us.save()
+            us.electeur.picture=BASE_DIR+'ml/dataset'+u+".1.jpg"
+            u.save()
+            return render(request,'poll/homeAdmin1.html')
+        except:
+           return render(request,'poll/homeAdmin1.html',{'error':"Error, fill the form and try again"})
+            
 
 class RegAgents(View):
     def get(self,request):
@@ -139,3 +148,23 @@ class Votes(View):
         vote=Vote(voter=electeur.electeur,p_party=party)
         vote.save()
         return redirect('poll:index')
+
+class Change_password(View):
+    def post(self,request):
+        ppw=request.POST['prev']
+        npw=request.POST['new']
+        if request.user.check_password(ppw):
+            if len(str(npw))<8:
+                err="Your password should be at least 8 characters long"
+                return render(request,'poll/changePassword.html',{'error':err})
+            else:
+                request.user.set_password(npw)
+                request.user.save()
+                return redirect('poll:logout')
+        else:
+            err="The previous password didn't match, try again"
+            return render(request,'poll/changePassword.html',{'error':err})
+
+class PassWord(View):
+    def get(selt,request):
+        return render(request,'poll/changePassword.html')

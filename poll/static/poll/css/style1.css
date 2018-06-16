@@ -140,13 +140,18 @@ img { max-width: 100%; }
 .top-content .description p { opacity: 0.8; }
 
 .timer {
-    margin-top: 10px;
+    margin-top: 50px;
+}
+
+.timer .days-wrapper,
+.timer .hours-wrapper,
+.timer .minutes-wrapper,
+.timer .seconds-wrapper {
 }
 
 .timer{
-	font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-    font-size: 50px;
-    font-weight: 90;
+    font-size: 80px;
+    font-weight: 100;
     line-height: 90px;
     display: inline-block;
 }

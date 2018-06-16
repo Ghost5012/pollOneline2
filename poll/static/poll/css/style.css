@@ -30,7 +30,12 @@ h3 {
     color: #555;
     line-height: 30px;
 }
-
+.er{
+	font-size: 12px;
+	text-align: center;
+	color: red;
+	font-family: Arial, Helvetica, sans-serif;
+}
 img { max-width: 100%; }
 
 ::-moz-selection { background: #4aaf51; color: #fff; text-shadow: none; }

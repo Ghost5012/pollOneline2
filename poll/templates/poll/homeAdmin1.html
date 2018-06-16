@@ -8,6 +8,7 @@
         <div class="top-content" style="background-image:url({% static 'poll/img/backgrounds/7.jpg' %});">
         	
             <div class="inner-bg">
+				
                 <div class="container">
                     <div class="row">
                         <div class="col-sm-5 text">
@@ -22,11 +23,12 @@
                         <div class="col-sm-5 form-box">
                         	<div class="form-top" style="margin-top:0%;">
                         		<div class="form-top-left">
+								{%if error%}
+								<h2 class="er"><i>{{error}}</i></h3>
+								{%else%}
                         			<h3>Register here</h3>
                             		<p>Fill in the form below:</p>
-                        		</div>
-                        		<div class="form-top-right">
-                        			<i class="fa fa-pencil"></i>
+								{%endif%}
                         		</div>
                             </div>
                             <div class="form">
@@ -43,33 +45,23 @@
 											</button>
 											<h4 class="text-center">Picture</h4>
 										</div>
-									
-									{%for field in form%}
-									{%if field.error%}
-										<div class="form-group control-group error">
-											<label class="sr-only" for="form-first-name" for="id_{{ field.name }}">{{field.label}}</label>
-											<div class="control">{{field}}
-													<span class="help-inline">
-														{% for error in  field.errors %}{{ error }}{% endfor %}
-													</span>
-											</div>
-										</div>
-						<!--			   <div class="form-group">
+										<div class="form-group">
+											 <label class="sr-only" for="form-last-name">First Name</label>
+											 <input type="text" name="name" placeholder="First name..." class="form-first-name form-control" id="form-first-name">
+										 </div>
+									   <div class="form-group">
 											<label class="sr-only" for="form-last-name">Last name</label>
 											<input type="text" name="surname" placeholder="Last name..." class="form-last-name form-control" id="form-last-name">
 										</div>
 										<div class="form-group">
 											<label class="sr-only" for="form-dob">Email</label>
 											<input type="date" name="dob" class="form-date form-control" id="form-date">
-										</div>-->
-									{%else%}
-										<div class="form-group control-group">
-											<label class="sr-only" for="form-first-name" for="id_{{ field.name }}">{{field.label}}</label>
-											<div class="control" placeholder="{{ field.name}}">{{field}}  
-											</div>		
 										</div>
-									{%endif%}
-									{%endfor%}
+										<div class="form-group">
+											 <label class="sr-only" for="form-pob">Last name</label>
+											 <input type="text" name="pob" placeholder="Place of birth" class="form-pob form-control" id="form-pob">
+										 </div>
+									
 										<div class="form-group">
 										<button type="submit" class="btn">Sign me up!</button>
 										</div>

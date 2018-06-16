@@ -9,7 +9,7 @@ class Electeur(models.Model):
     #cni_number=models.IntegerField(primary_key=True)
     #here the cni_number will be used for username to 
     # help identify the user uniquely
-    date_of_birth=models.DateField()
+    date_of_birth=models.DateField(null=True)
     palce_of_birth=models.CharField(max_length=15)
     picture=models.ImageField(upload_to="faces/")
     level=[("Agent","Agent"),("President","Surpeme court présidents"),("Voter","voter")]

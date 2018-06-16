@@ -160,7 +160,7 @@ def detect(request,id):
     rec.read(BASE_DIR+'/ml/recognizer/'+str(id)+'trainingData.yml')
     getId = 0
     font = cv2.FONT_HERSHEY_SIMPLEX
-    userId = 0
+    userId = id
     while(True):
         ret, img = cam.read()
         gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
