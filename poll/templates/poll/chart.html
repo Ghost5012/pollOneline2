@@ -1,0 +1,35 @@
+{%load static%}
+{% extends "poll/homebase.html" %}
+{%block title%}Admin page{% endblock %}
+{%block addload%}
+  <script src="{% url '/poll/Highcharts-6.1.0/code/highcharts.src.js' %}"></script>
+  <script src="https://code.highcharts.com/highcharts.js"></script>
+  <script src="https://code.highcharts.com/modules/data.js"></script>
+  <script src="https://code.highcharts.com/modules/drilldown.js"></script>
+  <div id="container" style="min-width: 310px; height: 400px; margin: 0 auto">
+{%endblock%}   
+
+{%block content%}
+		<!-- Top content -->
+	{%load static%}
+      <div class="top-content" style="background-image:url({% static 'poll/img/backgrounds/7.jpg' %});">
+        	
+        <div class="inner-bg">
+				
+            <div class="container" {%url 'poll:chart'%}>
+              
+            </div>
+            <script>
+                $.ajax({
+                  url: $("#container").attr({{chart}}),
+                  dataType: 'json',
+                  success: function (data) {
+                    Highcharts.chart("container", data);
+                  }
+                });
+            </script>
+        </div>
+            
+		</div>
+{% endblock %}
+	

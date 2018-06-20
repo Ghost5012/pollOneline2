@@ -33,8 +33,8 @@ ALLOWED_HOSTS = []
 INSTALLED_APPS = [
     'poll',
     'face_detection',
-    'rest_framework',
-    'bootstrapform',
+    #'rest_framework',
+    #'bootstrapform',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',

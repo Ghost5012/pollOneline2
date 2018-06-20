@@ -2,63 +2,78 @@
 {%block title%}Welcome{% endblock %}
 {%block addload%}
     {%load static%}
+    <script src="{% url '/poll/Highcharts-6.1.0/code/highcharts.src.js' %}"></script>
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+    <script src="https://code.highcharts.com/modules/data.js"></script>
+    <script src="https://code.highcharts.com/modules/drilldown.js"></script>
+    
+ 
     <link rel="stylesheet" href="{% static 'poll/css/style1.css' %}">
-{%endblock%}
+    <script type="text/javascript" src="{% static 'poll/fusioncharts/js/fusioncharts.js'%}"></script>
+    <script type="text/javascript" src="{% static 'poll/fusionchart/js/themes/fusioncharts.theme.ocean.js'%}"></script>
+    {%endblock%}
 {%block content%}
 {%load static%}
 <div class="top-content" style="background-image:url({% static 'poll/img/backgrounds/7.jpg' %});">
-    <div class="inner-bg">
-        <div class="container">
-            <div class="row">
-                <div class="col-sm-8 text">
-                    <h1 class="wow fadeInLeftBig" data-wow-duration="1.5s" data-wow-delay="1s">
-                        2018 Election <strong>Coming Soon</strong>
-                    </h1>
-                    <div class="description wow fadeInLeftBig" data-wow-duration="1.5s" data-wow-delay="2s">
-                        <p>
-                            Befor the Election day, this plaform is only acessible by the ELECAM registration agents
-                            and the President of the supreme cout. You are advised to <a href="{% url 'poll:pw' %}"><strong>your password</strong></a> for secutity 
-                            purpose
-                        </p>
+    {%if output%}
+    <div id="container" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
+        <script>
+            Highcharts.chart('container', {{ output|safe }});
+        </script>
+    {%else%}
+        <div class="inner-bg">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-8 text">
+                        <h1 class="wow fadeInLeftBig" data-wow-duration="1.5s" data-wow-delay="1s">
+                            2018 Election <strong>Coming Soon</strong>
+                        </h1>
+                        <div class="description wow fadeInLeftBig" data-wow-duration="1.5s" data-wow-delay="2s">
+                            <p>
+                                Befor the Election day, this plaform is only acessible by the ELECAM registration agents
+                                and the President of the supreme cout. You are advised to <a href="{% url 'poll:pw' %}"><strong>your password</strong></a> for secutity 
+                                purpose
+                            </p>
+                        </div>
+                        <div class="timer wow fadeInUp">
+                            <p id="demo" class="timer"></p>
+                        </div>
+
+    <script>
+    // Set the date we're counting down to
+    var countDownDate = new Date("Oct 11, 2018 00:00:00").getTime();
+
+    // Update the count down every 1 second
+    var x = setInterval(function() {
+
+        // Get todays date and time
+        var now = new Date().getTime();
+        
+        // Find the distance between now an the count down date
+        var distance = countDownDate - now;
+        
+        // Time calculations for days, hours, minutes and seconds
+        var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+        //Output the result in an element with id="demo"
+        document.getElementById("demo").innerHTML = days + "days " + hours + "h "
+        + minutes + "min" + seconds + "sec ";
+        
+        // If the count down is over, write some text 
+        if (distance < 0) {
+            clearInterval(x);
+            document.getElementById("demo").innerHTML = "EXPIRED";
+        }
+    }, 1000);
+    </script>
                     </div>
-                    <div class="timer wow fadeInUp">
-                        <p id="demo" class="timer"></p>
-                    </div>
-
-<script>
-// Set the date we're counting down to
-var countDownDate = new Date("Oct 11, 2018 00:00:00").getTime();
-
-// Update the count down every 1 second
-var x = setInterval(function() {
-
-    // Get todays date and time
-    var now = new Date().getTime();
-    
-    // Find the distance between now an the count down date
-    var distance = countDownDate - now;
-    
-    // Time calculations for days, hours, minutes and seconds
-    var days = Math.floor(distance / (1000 * 60 * 60 * 24));
-    var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-    var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-    var seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-    //Output the result in an element with id="demo"
-    document.getElementById("demo").innerHTML = days + "days " + hours + "h "
-    + minutes + "min" + seconds + "sec ";
-    
-    // If the count down is over, write some text 
-    if (distance < 0) {
-        clearInterval(x);
-        document.getElementById("demo").innerHTML = "EXPIRED";
-    }
-}, 1000);
-</script>
                 </div>
             </div>
-        </div>
-    </div>  
+        </div> 
+    {%endif%} 
 </div>
 {%endblock%}
 <!-- Javascript -->
