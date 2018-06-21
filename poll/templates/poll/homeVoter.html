@@ -2,25 +2,18 @@
 {%block title%}Welcome{% endblock %}
 {%block addload%}
     {%load static%}
-    <script src="{% url '/poll/Highcharts-6.1.0/code/highcharts.src.js' %}"></script>
+    <script src="{% static '/poll/Highcharts-6.1.0/code/js/highcharts.src.js' %}"></script>
     <script src="https://code.highcharts.com/highcharts.js"></script>
     <script src="https://code.highcharts.com/modules/data.js"></script>
     <script src="https://code.highcharts.com/modules/drilldown.js"></script>
     
  
     <link rel="stylesheet" href="{% static 'poll/css/style1.css' %}">
-    <script type="text/javascript" src="{% static 'poll/fusioncharts/js/fusioncharts.js'%}"></script>
-    <script type="text/javascript" src="{% static 'poll/fusionchart/js/themes/fusioncharts.theme.ocean.js'%}"></script>
     {%endblock%}
 {%block content%}
 {%load static%}
 <div class="top-content" style="background-image:url({% static 'poll/img/backgrounds/7.jpg' %});">
-    {%if output%}
-    <div id="container" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
-        <script>
-            Highcharts.chart('container', {{ output|safe }});
-        </script>
-    {%else%}
+
         <div class="inner-bg">
             <div class="container">
                 <div class="row">
@@ -73,7 +66,6 @@
                 </div>
             </div>
         </div> 
-    {%endif%} 
 </div>
 {%endblock%}
 <!-- Javascript -->

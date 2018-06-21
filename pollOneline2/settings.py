@@ -33,6 +33,7 @@ ALLOWED_HOSTS = []
 INSTALLED_APPS = [
     'poll',
     'face_detection',
+    'highcharts',
     #'rest_framework',
     #'bootstrapform',
     'django.contrib.admin',
@@ -82,7 +83,7 @@ DATABASES = {
         'ENGINE':'django.db.backends.mysql',
         'NAME':'elections2018',
         'USER':'root',
-        'PASSWORD':'',
+        'PASSWORD':'root',
         'HOST':'127.0.0.1',
         'PORT':''
     }

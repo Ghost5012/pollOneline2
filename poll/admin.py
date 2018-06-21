@@ -4,3 +4,4 @@ from .models import *
 admin.site.register(Electeur)
 admin.site.register(Party)
 admin.site.register(Candidate)
+admin.site.register(Vote)

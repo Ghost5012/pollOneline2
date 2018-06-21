@@ -14,5 +14,5 @@ path('home/save candidate',SaveCandidates.as_view(),name='saveCand'),
 path('vote/',Votes.as_view(),name="vote"),
 path('home/password/',PassWord.as_view(),name="pw"),
 path('change/',Change_password.as_view(),name='chPW'),
-path('home/result',chart,name='chart')
+path('home/result',test,name='chart')
 ]

@@ -1,5 +1,8 @@
 from django.shortcuts import render, redirect
 import json
+import random
+from highcharts.views import HighChartsBarView
+from django.db.models import Count, Q
 from django.contrib.auth.hashers import make_password,check_password
 from django.http import HttpResponse, HttpResponseRedirect, JsonResponse
 from django.urls import reverse
@@ -15,9 +18,9 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 import datetime
 
 #------*---*-- Take note of the line below
-#eldate=datetime.date(2018,11,11)
+eldate=datetime.date(2018,11,11)
 #------*--*--- to set the current as the election day,uncomment the line below and comment the one up
-eldate=datetime.date.today()
+#eldate=datetime.date.today()
 
 class IndexView(View):
     """vue présentant la page d'acceuil site de vote"""
@@ -47,8 +50,7 @@ class LoginView(View):
             if eldate==datetime.date.today():
                 if user.electeur in [p.voter for p in Vote.objects.all()]:
                     login(request,user)
-                    output=chart(request)
-                    return render(request,'poll/homeVoter.html',{'output':output})
+                    return redirect('poll:chart')
                 else:
                     face=detect(request,user.username)
                     if face:
@@ -100,11 +102,9 @@ class RegisterElecteur(View):
             pob=request.POST['pob']
             us=User.objects.create(username=u,first_name=name,last_name=surname,password=make_password(u))
             us.electeur.date_of_birth=dob
-            us.save()
             us.electeur.place_of_birth=pob
+            #us.electeur.picture=BASE_DIR+'ml/dataset'+u+".1.jpg"
             us.save()
-            us.electeur.picture=BASE_DIR+'ml/dataset'+u+".1.jpg"
-            u.save()
             return render(request,'poll/homeAdmin1.html')
         except:
            return render(request,'poll/homeAdmin1.html',{'error':"Error, fill the form and try again"})
@@ -175,67 +175,39 @@ class PassWord(View):
     def get(selt,request):
         return render(request,'poll/changePassword.html')
 
-def chart(request):
-    """datasource={}
-    datasource['chart']={
-        "caption":"2018 Presidential Elections",
-        "subCaption":"Results",
-        "xAxisName":"Parties",
-        "yAxisName":"voices in obtained",
-        "numberPrefix":"%",
-        "theme":"Zune"}
-    #number of votes registered
-    datasource['data']=[]
-    #datasource['linkeddata']=[]
-    abstension=0
-    for v in Vote.objects.all():
-            abstension+=1
+class Result(HighChartsBarView):
+    categories=list()
     for p in Party.objects.all():
-        data={}
-        data['label']=p.p_acronyme
-        voix=0
-        for pt in Vote.objects.all():
-            if pt.p_party is p:
-                voix+=1
-        data['value']=float((voix/abstension)*100)
-        #data['link']='newchart-jason'-p.p_acronyme
-        datasource['data'].append(data)
-    column2d = FusionCharts("column2d", "ex1" , "600", "350", "chart-1", "json", datasource)
-    return column2d.render()"""
-    abstension=len(Vote.objects.all())
-    chart=dict()
-    cat=[]
+        categories.append(p.p_acronyme)
+    @property
+    def series(self):
+        result=list()
+        for name in ('joe','jack','William','averell'):
+            data=list()
+            for x in range(len(self.categories)):
+                data.append(random.randint(0,10))
+            result.append({'name':name,"data":data})
+        return render('poll/chart.html',{'result':json.dumps(result)})
+"""def chart(request):
+    dataset=list()
+    abst=Vote.objects.count()
     for p in Party.objects.all():
-        cat.append(p.p_acronyme)
-    donn={}
-    donnee=[]
-    donn["name"]="Party"
-    donn["colorBypoint"]=True,
-    data=[]
-    for p in Party.objects.all():
-        d={}
-        d["name"]=p.p_acronyme
-        v=0
-        for c in Vote.objects.all():
-            if c.p_party==p:
-                v+=1
-        d["y"]=(v/abstension)*100
-        d["drilldown"]=p.p_name
-        data.append(d)
-    donn["data"]=data
-    chart["chart"]={'type':'pie'}
-    chart['title']={'text':'2018 Presidential eletions'}
-    chart['subtitle']='the Results'
-    chart['xAxix']={type:'category'}
-    chart['yAxis']={'title':{'text':'Percentage obtained'}}
-    chart['legend']={'enabled':False}
-    chart['plotOptions']={'series':{
-        'borderWidth':0,
-        'dataLabels':{
-            'enabled':True,
-            'format':'{point.y:.1f}%'
-        }
-    }}
-    chart["series"]=donn
-    #output=json.dumps(chart)
-    return JsonResponse(str(chart),safe=True)
+        d=dict()
+        d['party']=p.p_acronyme
+        c=0
+        for v in Vote.objects.all():
+           if v.p_party is p:
+               c+=1
+        d['v']=(c/abst)*100
+        dataset.append(d)
+    parties=list()
+    voix=list()
+    for entry in dataset:
+        parties.append(entry['party'])
+        voix.append(entry['v'])
+    return render (request,'poll/chart.html',
+    {'categories':json.dumps(parties),
+    'voix':json.dumps(voix)})"""
+
+def test(request):
+    return render(request,'poll/chart.html')
