@@ -18,9 +18,9 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 import datetime
 
 #------*---*-- Take note of the line below
-eldate=datetime.date(2018,11,11)
+#eldate=datetime.date(2018,11,11)
 #------*--*--- to set the current as the election day,uncomment the line below and comment the one up
-#eldate=datetime.date.today()
+eldate=datetime.date.today()
 
 class IndexView(View):
     """vue présentant la page d'acceuil site de vote"""
@@ -101,10 +101,11 @@ class RegisterElecteur(View):
             dob=request.POST['dob']
             pob=request.POST['pob']
             us=User.objects.create(username=u,first_name=name,last_name=surname,password=make_password(u))
-            us.electeur.date_of_birth=dob
-            us.electeur.place_of_birth=pob
+            el=Electeur.objects.get(user=us)
+            el.date_of_birth=dob
+            el.place_of_birth=pob
             #us.electeur.picture=BASE_DIR+'ml/dataset'+u+".1.jpg"
-            us.save()
+            el.save()
             return render(request,'poll/homeAdmin1.html')
         except:
            return render(request,'poll/homeAdmin1.html',{'error':"Error, fill the form and try again"})

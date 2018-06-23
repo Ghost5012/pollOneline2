@@ -8,6 +8,7 @@ from . import dataset_fetch as df
 from . import cascade as casc
 from PIL import Image
 from poll.views import *
+from path import path
 from time import time
 from sklearn.decomposition import PCA
 from sklearn.model_selection import GridSearchCV
@@ -79,11 +80,8 @@ def trainer(request,id):
     recognizer.save(BASE_DIR+'/ml/recognizer/'+str(id)+'trainingData.yml')
     cv2.destroyAllWindows()
     #supprimer toutes images dans le rep,sauf le premier
-    for img in imagePaths:
-        imid = int(os.path.split(img)[-1].split('.')[1])
-        if imid==1:
-            continue
-        os.system('rm -r '+img)
+    for f in imagePaths:
+        os.remove(f)
     #return redirect('/')
 
 def create_dataset(request):

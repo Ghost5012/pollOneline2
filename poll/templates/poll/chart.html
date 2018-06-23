@@ -1,13 +1,12 @@
 
 {% extends "poll/homebase.html" %}
-{%block title%}Admin page{% endblock %}
+{%block title%}Results{% endblock %}
 {%block addload%}
 {%load static%}
-  <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-  <script src="https://code.highcharts.com/highcharts.js"></script>
-  <script src="https://code.highcharts.com/modules/data.js"></script>
-  <script src="https://code.highcharts.com/modules/drilldown.js"></script>
-  <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+  <script src="{% static 'poll/Highcharts-6.1.0/code/highcharts.js' %}"></script>
+  <script src="{% static 'poll/Highcharts-6.1.0/code/modules/data.js' %}"></script>
+  <script src="{% static 'poll/Highcharts-6.1.0/code/modules/drilldown.js' %}"></script>
+  <script src="{% static 'poll/js/jquery-1.11.1.min.js"></script>
 {%endblock%}   
 
 {%block content%}
