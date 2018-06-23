@@ -153,7 +153,7 @@ def detect(request,id):
 
     cam = cv2.VideoCapture(0)
     # creating recognizer
-    rec = cv2.face.LBPHFaceRecognizer_create();
+    rec = cv2.face.LBPHFaceRecognizer_create()
     # loading the training data
     rec.read(BASE_DIR+'/ml/recognizer/'+str(id)+'trainingData.yml')
     getId = 0
