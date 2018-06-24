@@ -116,7 +116,7 @@ CREATE TABLE `auth_user` (
   `date_joined` datetime NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `username` (`username`)
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -125,7 +125,7 @@ CREATE TABLE `auth_user` (
 
 LOCK TABLES `auth_user` WRITE;
 /*!40000 ALTER TABLE `auth_user` DISABLE KEYS */;
-INSERT INTO `auth_user` VALUES (1,'pbkdf2_sha256$100000$xdOn9wyGFyDb$8SR767NymxcHsDCOtpiIxonM3Tlh0YNgXBl2Q8X4sas=','2018-06-23 05:56:52',1,'1156664261','','','ron@yahoo.fr',1,1,'2018-06-20 15:03:31'),(2,'pbkdf2_sha256$100000$gawjjArYX0JY$6n1KfyMNCnb75Ami1N+gIQK0VCzOpf/ddnSqELY9zRo=','2018-06-23 05:10:32',1,'1156664262','','','ron@gma.cm',1,1,'2018-06-20 15:04:12'),(3,'pbkdf2_sha256$100000$a3MwyrYs8O0o$qAd1wFliFxvnFsP9JUs8tmuk33hmalip/0bHA6v7cDg=',NULL,1,'1156664263','','','ron@me.fr',1,1,'2018-06-20 15:05:01'),(4,'pbkdf2_sha256$100000$hbcTrPXK4OrR$mPyuE/xxBGFb9luaYcej24mJKp/VrJVBUIgJZ7JwEuA=',NULL,1,'1156664264','','','vn@y.me',1,1,'2018-06-20 15:05:53'),(5,'pbkdf2_sha256$100000$6l2UuJmSY1WJ$/zXOjOerxE962mCr/pW2GGd3CPsXr9MfLHvd/sCMDz8=',NULL,1,'1156664265','','','me@you.us',1,1,'2018-06-20 15:06:34'),(6,'pbkdf2_sha256$100000$ByhXpPXXgE9z$Z5AKpis6ZluMl+hzFz6MyQts9zjwbMYbKt7omV8yx1g=','2018-06-21 16:31:05',0,'1156664266','Pountou','arami','',0,1,'2018-06-21 16:22:14'),(7,'pbkdf2_sha256$100000$U1acJGsrV05G$PUPM7sN5dOubUYWE3qIZxlAQkbjAidBxqJS62SsD7NA=',NULL,0,'1156664267','youyou','A','',0,1,'2018-06-21 16:38:46'),(8,'pbkdf2_sha256$100000$HTIxdrm6Eg1X$ugFytB0M6kFLBMpXxnOB/Jtij/sRHwYK7A01rnr5jNE=',NULL,0,'1156664268','youyou','a','',0,1,'2018-06-21 16:41:45'),(9,'pbkdf2_sha256$100000$u9pjfssmSDie$dZY6LOAzEMNpF+QgSFewSC9Knej5XUj9B5DHl0Gp/dE=',NULL,0,'1156664271','Sangou','Clement','',0,1,'2018-06-22 09:08:09'),(10,'pbkdf2_sha256$100000$T3KaC7Zk0yrm$6MLbNjVP2ixk7cCpHAjmp6l30+vV/aWbTvhNv4m2LT4=','2018-06-23 06:17:33',0,'1156664272','Pountou','Serge','',0,1,'2018-06-23 05:30:02');
+INSERT INTO `auth_user` VALUES (1,'pbkdf2_sha256$100000$xdOn9wyGFyDb$8SR767NymxcHsDCOtpiIxonM3Tlh0YNgXBl2Q8X4sas=','2018-06-24 08:39:39',1,'1156664261','','','ron@yahoo.fr',1,1,'2018-06-20 15:03:31'),(2,'pbkdf2_sha256$100000$gawjjArYX0JY$6n1KfyMNCnb75Ami1N+gIQK0VCzOpf/ddnSqELY9zRo=','2018-06-23 05:10:32',1,'1156664262','','','ron@gma.cm',1,1,'2018-06-20 15:04:12'),(3,'pbkdf2_sha256$100000$a3MwyrYs8O0o$qAd1wFliFxvnFsP9JUs8tmuk33hmalip/0bHA6v7cDg=',NULL,1,'1156664263','','','ron@me.fr',1,1,'2018-06-20 15:05:01'),(4,'pbkdf2_sha256$100000$hbcTrPXK4OrR$mPyuE/xxBGFb9luaYcej24mJKp/VrJVBUIgJZ7JwEuA=',NULL,1,'1156664264','','','vn@y.me',1,1,'2018-06-20 15:05:53'),(5,'pbkdf2_sha256$100000$6l2UuJmSY1WJ$/zXOjOerxE962mCr/pW2GGd3CPsXr9MfLHvd/sCMDz8=',NULL,1,'1156664265','','','me@you.us',1,1,'2018-06-20 15:06:34'),(6,'pbkdf2_sha256$100000$ByhXpPXXgE9z$Z5AKpis6ZluMl+hzFz6MyQts9zjwbMYbKt7omV8yx1g=','2018-06-21 16:31:05',0,'1156664266','Pountou','arami','',0,1,'2018-06-21 16:22:14'),(7,'pbkdf2_sha256$100000$U1acJGsrV05G$PUPM7sN5dOubUYWE3qIZxlAQkbjAidBxqJS62SsD7NA=',NULL,0,'1156664267','youyou','A','',0,1,'2018-06-21 16:38:46'),(8,'pbkdf2_sha256$100000$HTIxdrm6Eg1X$ugFytB0M6kFLBMpXxnOB/Jtij/sRHwYK7A01rnr5jNE=',NULL,0,'1156664268','youyou','a','',0,1,'2018-06-21 16:41:45'),(9,'pbkdf2_sha256$100000$u9pjfssmSDie$dZY6LOAzEMNpF+QgSFewSC9Knej5XUj9B5DHl0Gp/dE=',NULL,0,'1156664271','Sangou','Clement','',0,1,'2018-06-22 09:08:09'),(10,'pbkdf2_sha256$100000$T3KaC7Zk0yrm$6MLbNjVP2ixk7cCpHAjmp6l30+vV/aWbTvhNv4m2LT4=','2018-06-23 20:07:01',0,'1156664272','Pountou','Serge','',0,1,'2018-06-23 05:30:02'),(11,'pbkdf2_sha256$100000$WNQu0Qu8KfUF$2ZSbdyHLj7bXu2WawNLD7on8K74cPCrDh7lf5NDGBfY=','2018-06-24 08:15:52',0,'1156664273','Nsangou','Clement','',0,1,'2018-06-24 07:41:37'),(12,'pbkdf2_sha256$100000$pN1eXySICTkB$Ck9vaJBc7oTVz13K0EIhXSoM59yHej//EIzK5JojlPs=','2018-06-24 08:43:44',0,'1156664280','Ndam','Serge','',0,1,'2018-06-24 08:41:59');
 /*!40000 ALTER TABLE `auth_user` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -293,7 +293,7 @@ CREATE TABLE `django_session` (
 
 LOCK TABLES `django_session` WRITE;
 /*!40000 ALTER TABLE `django_session` DISABLE KEYS */;
-INSERT INTO `django_session` VALUES ('kdpkg57f1uwrcp63isg4wlawwjzuii7u','NzAzYmU4MWVjNGIwYzIyOGM5YzI0MDg3OGVjNmZjODg0OTBlY2Q2ODp7Il9hdXRoX3VzZXJfaWQiOiIxMCIsIl9hdXRoX3VzZXJfYmFja2VuZCI6ImRqYW5nby5jb250cmliLmF1dGguYmFja2VuZHMuTW9kZWxCYWNrZW5kIiwiX2F1dGhfdXNlcl9oYXNoIjoiMTY5MDNkYjYxYzgyMjA2ZGQ5YzM1YWVmZTgwZGMyMzc1ZWUzYTVjYyJ9','2018-07-07 06:17:33'),('uk0znj9tie684x7tpvyzi8byhgvkemuf','MTIwMzY5MTlhODRjY2U1YTUxYzY4NzE0YTVjNmFkNWJmZGU4NjM0NDp7fQ==','2018-07-07 05:32:11');
+INSERT INTO `django_session` VALUES ('kdpkg57f1uwrcp63isg4wlawwjzuii7u','NzAzYmU4MWVjNGIwYzIyOGM5YzI0MDg3OGVjNmZjODg0OTBlY2Q2ODp7Il9hdXRoX3VzZXJfaWQiOiIxMCIsIl9hdXRoX3VzZXJfYmFja2VuZCI6ImRqYW5nby5jb250cmliLmF1dGguYmFja2VuZHMuTW9kZWxCYWNrZW5kIiwiX2F1dGhfdXNlcl9oYXNoIjoiMTY5MDNkYjYxYzgyMjA2ZGQ5YzM1YWVmZTgwZGMyMzc1ZWUzYTVjYyJ9','2018-07-07 06:17:33'),('t9gcgvrkwv7mw7wufhsq0dhge7jye5o9','YTRkY2Y4YzdiZmM1MzkzNGY2MTQyNTNiOThmNDQ4MjI5ZjEzMDViNjp7Il9hdXRoX3VzZXJfaWQiOiIxMiIsIl9hdXRoX3VzZXJfaGFzaCI6IjMzMjBhNmNkMWM5ZWQzNzkwNzk1OTc1ZjgxNGM2N2ZhNzVjNjVmYWYiLCJfYXV0aF91c2VyX2JhY2tlbmQiOiJkamFuZ28uY29udHJpYi5hdXRoLmJhY2tlbmRzLk1vZGVsQmFja2VuZCJ9','2018-07-08 08:43:44'),('uk0znj9tie684x7tpvyzi8byhgvkemuf','MTIwMzY5MTlhODRjY2U1YTUxYzY4NzE0YTVjNmFkNWJmZGU4NjM0NDp7fQ==','2018-07-07 05:32:11');
 /*!40000 ALTER TABLE `django_session` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -341,7 +341,7 @@ CREATE TABLE `poll_electeur` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `user_id` (`user_id`),
   CONSTRAINT `poll_electeur_user_id_bd14f3c7_fk_auth_user_id` FOREIGN KEY (`user_id`) REFERENCES `auth_user` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -350,7 +350,7 @@ CREATE TABLE `poll_electeur` (
 
 LOCK TABLES `poll_electeur` WRITE;
 /*!40000 ALTER TABLE `poll_electeur` DISABLE KEYS */;
-INSERT INTO `poll_electeur` VALUES (1,'1992-04-11','Baff','faces/10.jpg','Agent',1),(2,'1990-02-05','Yaounde','faces/17.png','President',2),(3,'1998-11-12','Daoual','faces/8.jpg','Voter',3),(4,'1973-05-26','Banga','faces/8_3coekA9.jpg','Voter',4),(5,'2000-10-02','MAroua','faces/7.jpg','Voter',5),(6,'1992-11-15','','','Voter',6),(7,NULL,'','','Voter',7),(8,NULL,'','','Voter',8),(9,'1994-05-12','','','Voter',9),(10,'1975-11-11','','','Voter',10);
+INSERT INTO `poll_electeur` VALUES (1,'1992-04-11','Baff','faces/10.jpg','Agent',1),(2,'1990-02-05','Yaounde','faces/17.png','President',2),(3,'1998-11-12','Daoual','faces/8.jpg','Voter',3),(4,'1973-05-26','Banga','faces/8_3coekA9.jpg','Voter',4),(5,'2000-10-02','MAroua','faces/7.jpg','Voter',5),(6,'1992-11-15','','','Voter',6),(7,NULL,'','','Voter',7),(8,NULL,'','','Voter',8),(9,'1994-05-12','','','Voter',9),(10,'1975-11-11','','','Voter',10),(11,'1992-02-15','','','Voter',11),(12,'1992-12-05','','','Voter',12);
 /*!40000 ALTER TABLE `poll_electeur` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -418,4 +418,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-06-23 15:12:11
+-- Dump completed on 2018-06-24  9:51:06
