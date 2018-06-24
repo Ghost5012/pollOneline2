@@ -18,9 +18,9 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 import datetime
 
 #------*---*-- Take note of the line below
-#eldate=datetime.date(2018,11,11)
+eldate=datetime.date(2018,11,11)
 #------*--*--- to set the current as the election day,uncomment the line below and comment the one up
-eldate=datetime.date.today()
+#eldate=datetime.date.today()
 
 class IndexView(View):
     """vue présentant la page d'acceuil site de vote"""
@@ -104,6 +104,7 @@ class RegisterElecteur(View):
             el=Electeur.objects.get(user=us)
             el.date_of_birth=dob
             el.place_of_birth=pob
+            el.status=satut
             #us.electeur.picture=BASE_DIR+'ml/dataset'+u+".1.jpg"
             el.save()
             return render(request,'poll/homeAdmin1.html')
@@ -114,7 +115,7 @@ class RegisterElecteur(View):
 class RegAgents(View):
     def get(self,request):
 
-        return render(request,'poll/regAgents.html',{'form':RegistrationForm()})
+        return render(request,'poll/regAgents.html')
 
 class SaveParty(View):
     """cette vue enregistre les parties politiques dans la base de données"""
