@@ -15,12 +15,12 @@ from face_detection.views import detect
 from poll.models import *
 # Create your views here.
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-import datetime
+import datetime, time
 
 #------*---*-- Take note of the line below
-eldate=datetime.date(2018,11,11)
+#eldate=datetime.date(2018,11,11)
 #------*--*--- to set the current as the election day,uncomment the line below and comment the one up
-#eldate=datetime.date.today()
+eldate=datetime.date.today()
 
 class IndexView(View):
     """vue présentant la page d'acceuil site de vote"""
@@ -53,6 +53,7 @@ class LoginView(View):
                     return redirect('poll:chart')
                 else:
                     face=detect(request,user.username)
+                    #time.sleep(10)
                     if face:
                         party=Party.objects.order_by('pk')
                         context={'party':party}
