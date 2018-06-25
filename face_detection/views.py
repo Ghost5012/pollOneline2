@@ -97,7 +97,7 @@ def detect(request,id):
                 userId = getId
                 cv2.putText(img, "Voter "+str(userId),(x+2,y+h-5), font, 1, (150,255,0),2)
             else:
-                cv2.putText(img, "",(x+2,y+h-5), font, 1, (0,0,255),2)
+                cv2.putText(img, "User found",(x+2,y+h-5), font, 1, (0,0,255),2)
 
         cv2.imshow("Face",img)
         c=cv2.waitKey(30) & 0xff
